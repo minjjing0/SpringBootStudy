@@ -28,6 +28,7 @@ public class BlogApiController {
                 .body(savedArticle);
     }
 
+    //조회
     @GetMapping("/api/articles")
     public ResponseEntity<List<ArticleResponse>> findAllArticles() {
         List<ArticleResponse> articles = blogService.findAll()
@@ -38,6 +39,7 @@ public class BlogApiController {
                 .body(articles);
     }
 
+    //삭제
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
         blogService.delete(id);
@@ -46,6 +48,7 @@ public class BlogApiController {
                 .build();
     }
 
+    //수정
     @PutMapping("/api/articles/{id}")
     public ResponseEntity<Article> updateArticle(@PathVariable long id,
                                                  @RequestBody UpdateArticleRequest request) {
